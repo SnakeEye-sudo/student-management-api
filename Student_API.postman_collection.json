@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "a98c8c2c-87b6-455b-b9f1-d0b81df98db1",
+		"name": "Student Management API",
+		"description": "Postman collection for testing the Student Management REST API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Student",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+1234567890\",\n    \"course\": \"Computer Science\",\n    \"age\": 21\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students"
+					]
+				},
+				"description": "Creates a new student in the database. Returns the created student object with its database ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Students (Paginated)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students?page=0&size=10&sortBy=firstName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"description": "Zero-based page index"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "Size of each page"
+						},
+						{
+							"key": "sortBy",
+							"value": "firstName",
+							"description": "Field name to sort results by (e.g. firstName, lastName, age, email)"
+						}
+					]
+				},
+				"description": "Retrieves a paginated list of all students. Default page is 0, size is 10, sorted by firstName."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"1"
+					]
+				},
+				"description": "Retrieves details of a specific student using their database ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Search Student by Email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students/search?email=john.doe@example.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"search"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "john.doe@example.com",
+							"description": "Exact email address of the student"
+						}
+					]
+				},
+				"description": "Search for a student using their exact email address."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\",\n    \"email\": \"john.smith@example.com\",\n    \"phone\": \"+1987654321\",\n    \"course\": \"Software Engineering\",\n    \"age\": 22\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"1"
+					]
+				},
+				"description": "Updates details of an existing student by ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"1"
+					]
+				},
+				"description": "Deletes a student from the database by ID."
+			},
+			"response": []
+		}
+	]
+}
